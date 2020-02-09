@@ -1,0 +1,95 @@
+<Drawer>:
+
+    anim_type: 'slide_above_simple'
+
+    breath: hengitys
+    suunta: suunnat
+
+    # Side panel
+    GridLayout:
+        id: Menu
+        orientation: "vertical"
+        cols: 1
+        rows: 6
+        padding: 10
+        canvas.before:
+            Color:
+                rgba: 0.99, 0.99, 0.99, 1
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        Image:
+            source:'vkk-logo.png'
+        Label:
+            text: 'MVP sovellutus'
+            color: 1, 0, 0, 1
+        Button:
+            text:'Alkuun'
+            on_release: screen_manager.current = "screen1"
+        Button:
+            text: 'Hengitysopas'
+            on_release: screen_manager.current = "screen2"
+        Button:
+            text: 'Häsläyspäiväkirja'
+            on_release: screen_manager.current = "screen3"
+        Button:
+            text: 'Unipäiväkirja'
+            on_release: screen_manager.current = "screen4"
+
+
+    # Main panel
+    ScreenManager:
+        id:screen_manager
+
+        Screen:
+            name:"screen1"
+            Label:
+                text: 'Aloitusnäyttö'
+
+
+        Screen:
+            name:"screen2"
+            BoxLayout:
+                orientation: "vertical"
+                canvas.before:
+                    Color:
+                        rgba: 0.99, 0.99, 0.99, 1
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+
+                Label:
+                    id: suunnat
+                    color: 1, 0, 0, 1
+                    text: ''
+                Label:
+                    id: hengitys
+                    color: 1, 0, 0, 1
+                    text:'1'
+                BoxLayout:
+                    orientation: "horizontal"
+
+                    Button:
+                        text:'Aloita'
+                        size_hint: 0.4, 0.4
+                        pos_hint: {'center_x':0.5}
+                        on_release: root.hengitys()
+                    Button:
+                        text:'Lopeta'
+                        size_hint: 0.4, 0.4
+                        pos_hint: {'center_x':0.5}
+                        on_release: root.hengitys_seis()
+
+
+
+        Screen:
+            name:"screen3"
+            Label:
+                text:'ART häsläyspäiväkirja tähän'
+
+
+        Screen:
+            name:"screen4"
+            Label:
+                text:'Unipäiväkirja'
+
